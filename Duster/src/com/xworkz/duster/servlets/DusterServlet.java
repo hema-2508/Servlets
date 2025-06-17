@@ -73,7 +73,9 @@ public class DusterServlet extends HttpServlet {
          Optional<DusterDTO> optionalDusterDTO= dusterService.findById(id);
          if(optionalDusterDTO.isPresent())
          {
-             System.out.println("duster data is found");
+             DusterDTO dusterDTO=optionalDusterDTO.get();
+             System.out.println("duster data is found :"+dusterDTO);
+
          }
          else{
              System.out.println("duster data is not found for id :"+id);
