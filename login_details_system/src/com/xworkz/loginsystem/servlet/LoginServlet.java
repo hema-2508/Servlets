@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        LoginDto[] loginDtos = loginService.findAll();
-        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("success.jsp");
         resp.setContentType("text/html");
         req.setAttribute("loginDtos",loginDtos);
         dispatcher.forward(req,resp);

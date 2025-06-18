@@ -45,6 +45,43 @@
 
 
 
+<h1>${result}</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Created By</th>
+        <th>Created Time</th>
+    </tr>
+
+    <%
+    com.xworkz.loginsystem.dto.LoginDto[] dtos = (com.xworkz.loginsystem.dto.LoginDto[]) request.getAttribute("loginDtos");
+    if (dtos != null) {
+    for (com.xworkz.loginsystem.dto.LoginDto dto : dtos) {
+    if (dto != null) {
+    %>
+    <tr>
+        <td><%= dto.getId() %></td>
+        <td><%= dto.getUserName() %></td>
+        <td><%= dto.getUserEmail() %></td>
+        <td><%= dto.getUserPassword() %></td>
+        <td><%= dto.getCreatedBy() %></td>
+        <td><%= dto.getCreatedTime() %></td>
+    </tr>
+    <%
+    }
+    }
+    }
+    %>
+
+</table>
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
 </body>

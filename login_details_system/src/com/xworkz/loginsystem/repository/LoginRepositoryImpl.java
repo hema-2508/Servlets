@@ -4,6 +4,7 @@ import com.xworkz.loginsystem.dto.LoginDto;
 import com.xworkz.loginsystem.utils.JdbcUtils;
 
 import java.sql.*;
+import java.util.Arrays;
 
 public class LoginRepositoryImpl implements LoginRepository{
     @Override
@@ -35,8 +36,7 @@ public class LoginRepositoryImpl implements LoginRepository{
     @Override
     public LoginDto[] findAll() {
         int index=0;
-        //int arraySize=1;
-       //LoginDto[] loginDtos=null;
+       LoginDto[] loginDtos=new LoginDto[1];
 
         try {
             Class.forName(JdbcUtils.jdbcDriver);
@@ -46,7 +46,7 @@ public class LoginRepositoryImpl implements LoginRepository{
            PreparedStatement statement = connection.prepareStatement(fetchAll);
           ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
-                loginDtos=new LoginDto[arraySize];
+
                 System.out.println(resultSet.getInt(1));
                 System.out.println(resultSet.getString(2));
                 System.out.println(resultSet.getString(3));
@@ -63,8 +63,9 @@ public class LoginRepositoryImpl implements LoginRepository{
                 loginDto.setCreatedTime(resultSet.getTimestamp(6));
 
                 loginDtos[index]=loginDto;
-                arraySize++;
+
                 index++;
+                loginDtos= Arrays.copyOf(loginDtos,index+1);
 
 
             }
