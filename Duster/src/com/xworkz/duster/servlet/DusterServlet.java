@@ -1,4 +1,4 @@
-package com.xworkz.duster.servlets;
+package com.xworkz.duster.servlet;
 
 import com.xworkz.duster.dto.DusterDTO;
 import com.xworkz.duster.service.DusterService;
@@ -75,11 +75,15 @@ public class DusterServlet extends HttpServlet {
          {
              DusterDTO dusterDTO=optionalDusterDTO.get();
              System.out.println("duster data is found :"+dusterDTO);
+             req.setAttribute("dto", dusterDTO);
 
          }
          else{
              System.out.println("duster data is not found for id :"+id);
+             req.setAttribute("failure", "Duster data not found for ID: " + id);
          }
+           RequestDispatcher dispatcher = req.getRequestDispatcher("/DusterViewer.jsp");
+           dispatcher.forward(req, resp);
        }
     }
 }
