@@ -24,6 +24,9 @@
         </div>
 
     </form>
+    <br>
+    <span style="color:red;">${failure}</span>
+    <br><br>
     <p>Material: ${dto.material}</p>
     <p>Color: ${dto.color}</p>
     <p>Cost: ${dto.cost}</p>
